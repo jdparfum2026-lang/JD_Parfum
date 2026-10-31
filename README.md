@@ -16,9 +16,15 @@ Flask + gunicorn · Supabase Auth/DB · Cloudinary · Dexie (offline panel) · R
 
 Copy `.env.example` → `.env`. **Do not** reuse AmirCars live secrets.
 
-Required: `FLASK_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_KEY`, Cloudinary (`CLOUDINARY_URL` or name/key/secret).
+| Variable | Required | Where to get it (JD only) |
+|----------|----------|---------------------------|
+| `FLASK_SECRET_KEY` | yes | `openssl rand -hex 32` |
+| `SUPABASE_URL` | yes | Supabase → Project Settings → API → Project URL |
+| `SUPABASE_KEY` | yes | Same page → `anon` / publishable key |
+| `SUPABASE_SERVICE_ROLE_KEY` | no | Same page → `service_role` (prefer SQL `006` instead) |
+| `CLOUDINARY_URL` **or** `CLOUDINARY_CLOUD_NAME` + `CLOUDINARY_API_KEY` + `CLOUDINARY_API_SECRET` | yes | Cloudinary console → API Keys (new JD cloud) |
 
-Optional: `SUPABASE_SERVICE_ROLE_KEY` for server-side public catalog reads. Prefer running `sql/006_public_catalog_anon.sql` on the **JD** Supabase project so the publishable key can SELECT active products/images.
+Render service name: **`jd-parfum`** (`render.yaml`). SQL run order: see `sql/README.md` (include `006_public_catalog_anon.sql` for the public catalog).
 
 ## Brand assets
 

@@ -1,5 +1,7 @@
-# JD Parfum en Render — isolated from AmirCars
-# Start command: gunicorn --config gunicorn.conf.py wsgi:app
+# JD Parfum on Render — isolated from AmirCars (do not reuse AmirCars env values).
+# Dashboard: New → Blueprint / Web Service from this repo → service name jd-parfum
+# Start: gunicorn --config gunicorn.conf.py wsgi:app
+# After secrets are set, verify: https://jd-parfum.onrender.com/api/health
 services:
   - type: web
     name: jd-parfum
@@ -20,14 +22,17 @@ services:
         value: "true"
       - key: WEB_CONCURRENCY
         value: "1"
+      # Secrets — set in Render Dashboard (Environment). sync:false = not in git.
       - key: FLASK_SECRET_KEY
         sync: false
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_KEY
         sync: false
+      # Optional if sql/006_public_catalog_anon.sql is applied on JD Supabase
       - key: SUPABASE_SERVICE_ROLE_KEY
         sync: false
+      # Cloudinary: set CLOUDINARY_URL OR the three CLOUDINARY_* below (JD cloud only)
       - key: CLOUDINARY_URL
         sync: false
       - key: CLOUDINARY_CLOUD_NAME
