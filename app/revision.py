@@ -1,0 +1,2 @@
+APP_REVISION = "59"
+APP_SERVICE = "jdparfum"

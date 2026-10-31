@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JD Parfum — Acceso</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#0A1628" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='img/jdparfum/pwa-icon-192.png') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/jdparfum/pwa-icon-192.png') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}?v=18" />
+  </head>
+  <body class="login-body">
+    <main class="login-wrap">
+      <section class="glass login-card">
+        <img class="login-logo" src="{{ url_for('static', filename='img/jdparfum/logo.png') }}" alt="JD Parfum" />
+        <h1>JD Parfum</h1>
+        <p>Panel de administración</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flash-list">
+              {% for category, message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <form method="post" action="{{ url_for('auth.login') }}" autocomplete="off">
+          {{ form.csrf_token }}
+          <label>
+            Correo
+            {{ form.email(class_="app-input") }}
+          </label>
+          <label>
+            Contraseña
+            {{ form.password(class_="app-input") }}
+          </label>
+          <button class="btn" type="submit">Entrar al panel</button>
+        </form>
+        <p class="login-back"><a href="{{ url_for('catalog.storefront') }}">← Volver al catálogo</a></p>
+      </section>
+    </main>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js", { scope: "/" });
+      }
+    </script>
+  </body>
+</html>
