@@ -2,7 +2,8 @@
 name = "jd-parfum"
 
 # Koyeb: Create App → GitHub → repo JD_Parfum → Build: Python (Procfile web: gunicorn).
-# Secrets (not in git): SUPABASE_URL, SUPABASE_KEY, FLASK_SECRET_KEY, CLOUDINARY_URL.
+# JD-only secrets (not in git): SUPABASE_URL, SUPABASE_KEY, FLASK_SECRET_KEY,
+# CLOUDINARY_URL (or CLOUDINARY_CLOUD_NAME + API_KEY + API_SECRET). Never AmirCars.
 
 [env]
 FLASK_DEBUG = "0"

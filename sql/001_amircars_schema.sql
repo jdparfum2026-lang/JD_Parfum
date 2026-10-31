@@ -1,7 +1,8 @@
 -- =============================================================================
--- AMIRCARS — Esquema PostgreSQL, RLS estricto y bitácora inmutable
+-- JD Parfum — Esquema PostgreSQL, RLS estricto y bitácora inmutable
+-- (estructura heredada de AmirCars; ejecutar SOLO en el proyecto Supabase de JD)
 -- Pegar COMPLETO en: Supabase Dashboard → SQL Editor → Run
--- Proyecto: https://lqhtbbkmkjoqyfzrofhh.supabase.co
+-- Proyecto: https://YOUR_JD_PARFUM_PROJECT.supabase.co  (nunca AmirCars)
 -- =============================================================================
 
 BEGIN;
